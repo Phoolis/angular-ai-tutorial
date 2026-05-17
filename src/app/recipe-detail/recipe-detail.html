@@ -1,0 +1,11 @@
+  <h2>{{ recipe().name }}</h2>
+  <img [src]="recipe().imgUrl" [alt]="recipe().name" />
+  <p>{{ recipe().description }}</p>
+  <button (click)="decreaseServings()">Remove Servings</button>
+  <button (click)="increaseServings()">Add Servings</button>
+  <p>Servings: {{ servings() }}</p>
+  <ul>
+    @for (ingredient of adjustedIngredients(); track ingredient.name) {
+      <li>{{ ingredient.name }}: {{ ingredient.quantity }} {{ ingredient.unit}}</li>
+    }
+  </ul>
