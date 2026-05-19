@@ -1,4 +1,4 @@
-  <h2>{{ recipe().name }}</h2>
+<h2>{{ recipe().name }} @if (recipe().isFavorite) { ❤️} </h2>
   <img [src]="recipe().imgUrl" [alt]="recipe().name" />
   <p>{{ recipe().description }}</p>
   <button (click)="decreaseServings()">Remove Servings</button>
@@ -9,3 +9,4 @@
       <li>{{ ingredient.name }}: {{ ingredient.quantity }} {{ ingredient.unit}}</li>
     }
   </ul>
+    
