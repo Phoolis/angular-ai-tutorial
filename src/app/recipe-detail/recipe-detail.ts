@@ -1,4 +1,4 @@
-import { Component, input, signal, computed, inject } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { RecipeModel } from '../models';
 import { ActivatedRoute } from '@angular/router';
 import { Recipe } from '../recipe';
@@ -18,7 +18,7 @@ export class RecipeDetail {
   constructor() {
     this.route.paramMap.subscribe(params => {
       const id = Number(params.get('id'));
-      const recipes = this.recipeService.recipes;
+      const recipes = this.recipeService.recipes();
       const recipe = recipes.find(recipe => recipe.id === id);
       this.recipe.set(recipe!);
     })

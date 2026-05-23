@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label for="name">Recipe Name</label>
+  <input id="name" formControlName="name" />
+
+  <label for="description">Recipe Description</label>
+  <input id="description" formControlName="description" />
+
+  <button type="submit" [disabled]="form.invalid">Save Recipe</button>
+</form>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { MOCK_RECIPES } from './mock-recipes';
 import { RecipeModel } from './models';
 
@@ -6,5 +6,15 @@ import { RecipeModel } from './models';
   providedIn: 'root',
 })
 export class Recipe {
-  readonly recipes: RecipeModel[] = MOCK_RECIPES;
+  private readonly _recipes = signal<RecipeModel[]>(MOCK_RECIPES);
+
+  // Public read access
+  readonly recipes = this._recipes.asReadonly();
+
+  // Write method
+  addRecipe(recipe: Omit<RecipeModel, 'id'>): void {
+    const nextId = this._recipes().length + 1;
+    this._recipes.update(current => [...current, {...recipe, id: nextId}]);
+  }
+
 }
