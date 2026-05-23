@@ -1,12 +1,12 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { RecipeModel } from '../models';
 import { Recipe } from '../recipe';
-import { RecipeDetail } from '../recipe-detail/recipe-detail';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
-  imports: [RecipeDetail, FormsModule],
+  imports: [RouterLink,  FormsModule],
   templateUrl: './recipe-list.html',
   styleUrl: './recipe-list.scss',
 })
@@ -21,13 +21,5 @@ export class RecipeList {
       recipe.name.toLowerCase().includes(this.searchTerm().toLowerCase())
     )
   );
-
-  protected nextRecipe(): void {
-    this.recipe.set(this.recipes[1]);
-  }
-
-  protected previousRecipe(): void {
-    this.recipe.set(this.recipes[0]);
-  }
 
 }

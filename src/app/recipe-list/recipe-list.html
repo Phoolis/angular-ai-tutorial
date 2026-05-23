@@ -2,10 +2,9 @@
   (ngModelChange)="searchTerm.set($event)"
   placeholder="Search recipe..." />
   <ul>
-    @for (recipe of filteredRecipes(); track recipe.name) {
-      <li>{{ recipe.name }}</li>
+    @for (recipe of filteredRecipes(); track recipe?.name) {
+      <li>
+        <a [routerLink]="['/recipes', recipe.id]">{{ recipe.name }}</a>
+      </li>
     }
   </ul>
-  <button (click)="previousRecipe()">Previous</button>
-  <button (click)="nextRecipe()">Next</button>
-  <app-recipe-detail [recipe]="recipe()" />
