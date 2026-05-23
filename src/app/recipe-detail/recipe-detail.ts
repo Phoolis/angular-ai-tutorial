@@ -2,10 +2,12 @@ import { Component, signal, computed, inject } from '@angular/core';
 import { RecipeModel } from '../models';
 import { ActivatedRoute } from '@angular/router';
 import { Recipe } from '../recipe';
+import { MatCard, MatCardHeader, MatCardTitle, MatCardImage, MatCardContent, MatCardSubtitle, MatCardActions } from '@angular/material/card'
+import { MatButton } from '@angular/material/button'
 
 @Component({
   selector: 'app-recipe-detail',
-  imports: [],
+  imports: [MatCard, MatCardHeader, MatCardTitle, MatCardImage, MatCardContent, MatCardSubtitle, MatCardActions, MatButton],
   templateUrl: './recipe-detail.html',
   styleUrl: './recipe-detail.scss',
 })
